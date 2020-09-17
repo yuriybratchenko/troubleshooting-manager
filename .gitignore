@@ -1,0 +1,7 @@
+*.log
+node_modules
+.sass-cache
+.idea
+package-lock.json
+prepros-6.config
+!/assets/css/troubleshooting-manager-frontend.css.map

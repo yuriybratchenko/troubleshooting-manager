@@ -1,0 +1,113 @@
+.troubleshooting-manager-cats {
+
+	&__title {
+		color: #162B40;
+
+		.troubleshooting-manager-cats--single & {
+			margin: 0 0 20px;
+			font-size: 30px;
+			line-height: 42px;
+			font-weight: 700;
+			@media (max-width: 425px) {
+				font-size: 18px;
+				line-height: 28px;
+				margin: 0 0 10px;
+			}
+		}
+
+		.troubleshooting-manager-cats--archive & {
+			margin: 0 0 10px;
+			font-size: 18px;
+			line-height: 27px;
+			font-weight: 500;
+		}
+	}
+
+	&__child-list {
+		display: flex;
+		flex-wrap: wrap;
+		margin: 0 -10px;
+		list-style: none;
+
+		.troubleshooting-manager-cats--single & {
+			font-size: 18px;
+			line-height: 32px;
+			font-weight: 500;
+			@media (max-width: 425px) {
+				font-size: 14px;
+			}
+		}
+
+		.troubleshooting-manager-cats--archive & {
+			font-size: 16px;
+			line-height: 28px;
+			font-weight: 400;
+		}
+	}
+	&__child-item {
+		flex: 0 0 100%;
+		max-width: 100%;
+		padding: 0 10px;
+		.troubleshooting-manager-cats--archive & {
+			& + .troubleshooting-manager-cats__child-item {
+				margin-top: 1px;
+			}
+		}
+	}
+
+	&__child-link {
+		position: relative;
+		color: #617BE5;
+
+		&:before {
+			content: '\f054';
+			position: absolute;
+			top: 0;
+			left: 0;
+			font-family: 'FontAwesome';
+			font-size: 8px;
+		}
+
+		.troubleshooting-manager-cats--single & {
+			display: inline-block;
+			padding-left: 15px;
+
+			&:hover {
+				color: #34D7A1;
+			}
+		}
+
+		.troubleshooting-manager-cats--archive & {
+			display: block;
+			padding-left: 35px;
+			padding-right: 20px;
+
+			&:before {
+				left: 20px;
+			}
+
+			&:hover,
+			&.current-category {
+				color: #fff;
+				background-color: #617BE5;
+			}
+		}
+	}
+}
+.custom-background-image-size .elementor-widget-container {
+	@media (max-width: 425px) {
+		background-image: none!important;
+	}
+}
+.custom-width-section .elementor-widget-container {
+	@media (max-width: 425px) {
+		background-image: none!important;
+	}
+	@media (max-width: 1024px) and (min-width: 425px) {
+		background-size: 350px!important;
+	}
+}
+.custom-width-section .troubleshooting-manager-cats {
+	&__child-item {
+	}
+}
