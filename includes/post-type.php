@@ -85,7 +85,7 @@ if ( ! class_exists( 'Troubleshooting_Manager_Post_Type' ) ) {
 						'add_new'       => esc_html__( 'Add New Article', 'troubleshooting-manager' ),
 						'add_new_item'  => esc_html__( 'Add New Article', 'troubleshooting-manager' ),
 						'edit_item'     => esc_html__( 'Edit Article', 'troubleshooting-manager' ),
-						'menu_name'     => esc_html__( 'Troubleshooting Manager', 'troubleshooting-manager' ),
+						'menu_name'     => esc_html__( 'TS Manager', 'troubleshooting-manager' ),
 					],
 					'supports'          => apply_filters( 'troubleshooting-manager/post-type/article/register/supports', [
 						'title',
@@ -109,7 +109,7 @@ if ( ! class_exists( 'Troubleshooting_Manager_Post_Type' ) ) {
 					],
 					'query_var'       => true,
 					'menu_position'   => 25,
-					'menu_icon'       => ( version_compare( $GLOBALS['wp_version'], '3.8', '>=' ) ) ? 'dashicons-book' : '',
+					'menu_icon'       => ( version_compare( $GLOBALS['wp_version'], '3.8', '>=' ) ) ? 'dashicons-buddicons-replies' : '',
 					'can_export'      => true,
 					'has_archive'     => true,
 				],

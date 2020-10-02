@@ -84,7 +84,7 @@ if ( ! class_exists( 'Troubleshooting_Manager_Elementor_Template_Widget' ) ) {
 		public function __construct() {
 			$this->widget_name        = esc_html__( 'Elementor Template', 'troubleshooting-manager' );
 			$this->widget_description = esc_html__( 'Display your Elementor Template.', 'troubleshooting-manager' );
-			$this->widget_id          = 'sroco-school-elementor-template-widget';
+			$this->widget_id          = 'ts-elementor-template-widget';
 			$this->widget_cssclass    = 'elementor-template-widget';
 			$this->settings           = array(
 				'title' => array(
@@ -124,6 +124,15 @@ if ( ! class_exists( 'Troubleshooting_Manager_Elementor_Template_Widget' ) ) {
 			add_action( 'widgets.php', array( $this, 'ajax_init' ), 1 );
 
 			add_filter( 'widget_display_callback', array( $this, 'prepare_instance' ), 10, 2 );
+
+            function ts_manager_widget_title_tag( $params ) {
+                $params[0]['before_title'] = '<div class="widget-title ts-manager-sidebar-title">' ;
+                $params[0]['after_title'] = '</div>' ;
+
+                return $params;
+            }
+
+            add_filter( 'dynamic_sidebar_params' , 'ts_manager_widget_title_tag' );
 		}
 
 		/**
@@ -134,6 +143,7 @@ if ( ! class_exists( 'Troubleshooting_Manager_Elementor_Template_Widget' ) ) {
 		 * @param  WP_Widget $widget   The current widget instance.
 		 * @return array
 		 */
+
 		public function prepare_instance( $instance, $widget ) {
 
 			if ( ! empty( $instance ) ) {

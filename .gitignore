@@ -4,4 +4,4 @@ node_modules
 .idea
 package-lock.json
 prepros-6.config
-!/assets/css/troubleshooting-manager-frontend.css.map
+*.map

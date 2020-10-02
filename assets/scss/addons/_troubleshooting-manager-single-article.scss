@@ -1,0 +1,121 @@
+$text-color: #556474;
+$heading-color: #162B40;
+$accent-color: #34D7A1;
+
+.troubleshooting-manager__single-article {
+	font-style: normal;
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 24px;
+	color: $text-color;
+
+	* {
+		margin: 0;
+		padding: 0;
+	}
+
+	&-inner {
+		display: flex;
+		flex-flow: row wrap;
+	}
+
+	&-container {
+		width: 67%;
+		flex: 1 1 auto;
+	}
+
+	&-sidebar {
+		width: 33%;
+		//position: relative;
+		//&:before {
+		//	content: '';
+		//	position: absolute;
+		//	display: block;
+		//	background-color: #F9FAFB;
+		//	height: 100%;
+		//	width: 100%;
+		//}
+	}
+
+	&-sidebar-inner {
+		padding: 20px 15px;
+	}
+
+	p { margin-bottom: 20px }
+
+	.creative-list {
+		list-style-type: none;
+		counter-reset: num;
+		&__title {
+			color: $heading-color;
+			font-weight: 400;
+			font-size: 20px;
+			line-height: 28px;
+			b,strong { font-weight: 700; }
+			&:before {
+				display: inline-flex;
+				justify-content: center;
+				align-items: center;
+				width: 40px;
+				height: 40px;
+				margin-right: 20px;
+				counter-increment: num;
+				content: ""counter(num)"";
+				border-radius: 100%;
+				font-weight: bold;
+				font-size: 20px;
+				line-height: 1;
+				background-color: $accent-color;
+				color: #fff;
+			}
+		}
+		&__content {
+			margin: 10px 0 20px 60px;
+		}
+	}
+
+	&-title {
+		font-weight: bold;
+		font-size: 48px;
+		line-height: 56px;
+		margin: 20px 0;
+		color: $heading-color;
+	}
+
+	&-meta {
+		line-height: 32px;
+		margin-bottom: 30px;
+		color: #5C6B79;
+		span {
+			color: #162B40;
+		}
+	}
+
+	&-content {
+		.question-title,
+		.answer-title {
+			color: #F5435A;
+			font-weight: bold;
+			font-size: 32px;
+			line-height: 40px;
+			margin-bottom: 15px;
+		}
+		.answer-title {
+			color: $accent-color;
+		}
+		.question-box:not(.answer-box) {
+			background: rgba(97, 123, 229, 0.08);
+			padding: 14px 28px;
+			border-radius: 3px;
+			margin-bottom: 55px;
+		}
+		a {
+			color: #617BE5;
+			text-decoration: none;
+
+			&:hover {
+				color: $accent-color;
+			}
+		}
+	}
+}

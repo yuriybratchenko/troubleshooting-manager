@@ -65,9 +65,9 @@ if ( ! class_exists( 'Troubleshooting_Manager_Article_Data' ) ) {
 		 */
 		public function get_single_guide_article() {
 
-			//$is_active_sidebar = is_active_sidebar( 'troubleshooting-manager-article-sidebar' );
+			$is_active_sidebar = is_active_sidebar( 'troubleshooting-manager-article-sidebar' );
 
-			$is_active_sidebar = false;
+			$is_active_sidebar = true;
 
 			$is_sidebar_class = $is_active_sidebar ? 'has-sidebar' : 'no-sidebar';
 
@@ -86,6 +86,9 @@ if ( ! class_exists( 'Troubleshooting_Manager_Article_Data' ) ) {
 							$format = $this->get_post_format( $post_id );?>
 
 							<h1 class="troubleshooting-manager__single-article-title"><?php echo the_title(); ?></h1>
+                            <div class="troubleshooting-manager__single-article-meta"><?php echo 'Modified on: ' ?>
+                                <span><?php echo get_the_modified_date('D, j M, Y \a\t g:i A') ?></span>
+                            </div>
 							<?php $this->get_article_media(); ?>
 							<div class="troubleshooting-manager__single-article-content"><?php
 
