@@ -1,6 +1,7 @@
 $text-color: #556474;
 $heading-color: #162B40;
 $accent-color: #34D7A1;
+$accent-color2: #617BE5;
 
 .troubleshooting-manager__single-article {
 	font-style: normal;
@@ -16,29 +17,68 @@ $accent-color: #34D7A1;
 
 	&-inner {
 		display: flex;
-		flex-flow: row wrap;
+		flex-flow: row nowrap;
 	}
 
 	&-container {
 		width: 67%;
 		flex: 1 1 auto;
+		padding: 36px 68px 30px 0;
 	}
 
-	&-sidebar {
+	&-sidebar-wrap {
 		width: 33%;
-		//position: relative;
-		//&:before {
-		//	content: '';
-		//	position: absolute;
-		//	display: block;
-		//	background-color: #F9FAFB;
-		//	height: 100%;
-		//	width: 100%;
-		//}
+		background-color: #F9FAFB;
+
+		.ts-manager-sidebar-title {
+			padding-top: 103px;
+		}
+		.troubleshooting-manager-related-articles {
+			&__item {
+				display: flex;
+				flex-direction: row;
+				margin-bottom: 12px;
+				background: none;
+				&.current {
+					display: none;
+				}
+				&:hover {}
+			}
+			&__link {
+				color: #5C6B79;
+				font-size: 16px;
+				line-height: 24px;
+			}
+			&__icon {
+				margin: 3px 10px 0 0;
+				&:before {
+					content: '';
+					display: inline-block;
+					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='20' height='20' viewBox='0 0 20 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M3.33341 5.00008H1.66675V16.6667C1.66675 17.5834 2.41675 18.3334 3.33341 18.3334H15.0001V16.6667H3.33341V5.00008ZM16.6667 1.66675H6.66675C5.75008 1.66675 5.00008 2.41675 5.00008 3.33341V13.3334C5.00008 14.2501 5.75008 15.0001 6.66675 15.0001H16.6667C17.5834 15.0001 18.3334 14.2501 18.3334 13.3334V3.33341C18.3334 2.41675 17.5834 1.66675 16.6667 1.66675ZM15.8334 9.16675H7.50008V7.50008H15.8334V9.16675ZM12.5001 12.5001H7.50008V10.8334H12.5001V12.5001ZM15.8334 5.83342H7.50008V4.16675H15.8334V5.83342Z' fill='%239EA7B0'/%3E%3C/svg%3E");
+					width: 20px;
+					height: 20px;
+				}
+			}
+		}
 	}
 
 	&-sidebar-inner {
 		padding: 20px 15px;
+	}
+
+	&-breadcrumbs {
+		display: flex;
+		flex-direction: row;
+		font-size: 12px;
+		a {
+			color: $accent-color2;
+			&:hover {
+				color: $accent-color;
+			}
+		}
+		span {
+			margin: 0 9px;
+		}
 	}
 
 	p { margin-bottom: 20px }
@@ -78,13 +118,13 @@ $accent-color: #34D7A1;
 		font-weight: bold;
 		font-size: 48px;
 		line-height: 56px;
-		margin: 20px 0;
+		margin: 66px 0 19px;
 		color: $heading-color;
 	}
 
 	&-meta {
 		line-height: 32px;
-		margin-bottom: 30px;
+		margin-bottom: 45px;
 		color: #5C6B79;
 		span {
 			color: #162B40;
@@ -98,24 +138,28 @@ $accent-color: #34D7A1;
 			font-weight: bold;
 			font-size: 32px;
 			line-height: 40px;
-			margin-bottom: 15px;
+			margin-bottom: 24px;
 		}
 		.answer-title {
 			color: $accent-color;
 		}
 		.question-box:not(.answer-box) {
 			background: rgba(97, 123, 229, 0.08);
-			padding: 14px 28px;
+			padding: 24px 20px;
 			border-radius: 3px;
-			margin-bottom: 55px;
+			margin-bottom: 52px;
 		}
 		a {
-			color: #617BE5;
-			text-decoration: none;
+			color: $accent-color2;
 
 			&:hover {
 				color: $accent-color;
 			}
 		}
 	}
+}
+
+.troubleshooting-manager {
+	background-color: transparent;
+	background-image: linear-gradient(90deg,#fff 61%,#F9FAFB 0%);
 }

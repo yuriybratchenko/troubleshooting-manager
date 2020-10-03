@@ -59,6 +59,32 @@ if ( ! class_exists( 'Troubleshooting_Manager_Article_Data' ) ) {
 			}
 		}
 
+        public function get_top_level_category() {
+            $post_id  = get_the_ID();
+            $taxonomy = troubleshooting_manager()->post_type->category_term_slug();
+
+            $terms = wp_get_post_terms( $post_id, $taxonomy, array( 'orderby' => 'parent' ) );
+
+            if ( ! $terms || is_wp_error( $terms ) ) {
+                return false;
+            }
+
+            $term = array_pop( $terms );
+
+            $parent_id = $term->parent;
+
+            while ( $parent_id ) {
+                $_term     = get_term_by( 'id', $parent_id, $taxonomy );
+                $parent_id = $_term->parent;
+
+                if ( $parent_id ) {
+                    $term = $_term;
+                }
+            }
+
+            return $term;
+        }
+
 		/**
 		 * [get_single_guide_article description]
 		 * @return [type] [description]
@@ -66,12 +92,10 @@ if ( ! class_exists( 'Troubleshooting_Manager_Article_Data' ) ) {
 		public function get_single_guide_article() {
 
 			$is_active_sidebar = is_active_sidebar( 'troubleshooting-manager-article-sidebar' );
-
 			$is_active_sidebar = true;
-
 			$is_sidebar_class = $is_active_sidebar ? 'has-sidebar' : 'no-sidebar';
 
-			?><div class="troubleshooting-manager__single-article container guide-article <?php echo $is_sidebar_class; ?>"><?php
+            ?><div class="troubleshooting-manager__single-article container guide-article <?php echo $is_sidebar_class; ?>"><?php
 					do_action( 'cx_breadcrumbs/render' );
 
 				?><div class="troubleshooting-manager__single-article-inner"><?php
@@ -79,6 +103,34 @@ if ( ! class_exists( 'Troubleshooting_Manager_Article_Data' ) ) {
 					while ( have_posts() ) : the_post();
 
 					?><article id="primary" class="troubleshooting-manager__single-article-container">
+
+                        <div class="troubleshooting-manager__single-article-breadcrumbs">
+                            <a class="ts-manager-front" href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php esc_html_e( 'Troubleshooting', 'troubleshooting-manager' ); ?></a>
+                            <span>/</span>
+                            <div class="ts-manager-tax"> <?php
+                                $btn_format = '<a href="%1$s">%2$s</a>';
+
+                                $top_level_term = $this->get_top_level_category();
+                                $post_id  = get_the_ID();
+                                $taxonomy = troubleshooting_manager()->post_type->category_term_slug();
+                                $terms = wp_get_post_terms( $post_id, $taxonomy, array( 'orderby' => 'parent' ) );
+
+                                if ( ! $terms || is_wp_error( $terms ) ) {
+                                    return false;
+                                }
+                                $term = array_pop( $terms );
+                                $btn_text = $term->name;
+
+                                printf(
+                                    $btn_format,
+                                    get_term_link( $top_level_term->term_id, $top_level_term->taxonomy ),
+                                    $btn_text
+                                );
+
+                                ?></div><span>/</span>
+                            <div class="ts-manager-title"><?php echo the_title(); ?></div>
+                        </div>
+
 						<div class="troubleshooting-manager__single-article-container-inner"><?php
 
 							$post_id = get_the_ID();
@@ -107,32 +159,17 @@ if ( ! class_exists( 'Troubleshooting_Manager_Article_Data' ) ) {
 					</article><?php
 					endwhile;
 					if ( $is_active_sidebar ) : ?>
+                    <div class="troubleshooting-manager__single-article-sidebar-wrap">
 						<aside id="secondary" class="troubleshooting-manager__single-article-sidebar">
 							<div class="troubleshooting-manager__single-article-sidebar-inner">
 								<?php dynamic_sidebar( 'troubleshooting-manager-article-sidebar' ); ?>
 							</div>
 						</aside><!-- #secondary -->
+                    </div>
 					<?php endif;?>
 				</div>
 			</div>
-			<div class="troubleshooting-manager__single-post-navigation">
-				<?php
-				the_post_navigation( array(
-					'prev_text' => sprintf(
-						'<span class="nav-post-title">%2$s</span><div class="troubleshooting-manager-nav-wrap"><i class="fa fa-chevron-left" aria-hidden="true"></i><span class="nav-text">%1$s</span></div>',
-						esc_html__( 'Prev post', 'troubleshooting-manager' ),
-						'%title'
-					),
-					'next_text' => sprintf(
-						'<span class="nav-post-title">%2$s</span><div class="troubleshooting-manager-nav-wrap"><i class="fa fa-chevron-right" aria-hidden="true"></i><span class="nav-text">%1$s</span></div>',
-						esc_html__( 'Next post', 'troubleshooting-manager' ),
-						'%title'
-					),
-					'in_same_term' => true,
-					'taxonomy'     => troubleshooting_manager()->post_type->category_term_slug(),
-				) );
-				?>
-			</div><?php
+            <?php
 		}
 
 		/**

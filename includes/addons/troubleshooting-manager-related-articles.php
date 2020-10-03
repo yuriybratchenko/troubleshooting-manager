@@ -193,15 +193,10 @@ class Troubleshooting_Manager_Related_Articles extends Troubleshooting_Manager_B
 						?>
 
 						<li class="troubleshooting-manager-related-articles__item <?php echo esc_attr( $article_item_current_class ) ?>" id="croco-article-<?php the_ID(); ?>">
+                            <span class="troubleshooting-manager-related-articles__icon"></span>
 							<a class="troubleshooting-manager-related-articles__link" href="<?php the_permalink(); ?>"><?php
-								the_title();
-
-								if ( $is_course_article ) {
-									echo sprintf( '<i class="nc-icon-glyph education_hat" data-tippy="%s" data-tippy-theme="light-border" data-tippy-arrow="true"></i>',
-										esc_html__( 'This article is a lesson from the educational course at CrocoBlock', 'troubleshooting-manager' )
-									);
-								}
-							?></a>
+								the_title(); ?>
+                            </a>
 						</li><?php
 
 						$count++;
