@@ -74,7 +74,7 @@ class Troubleshooting_Manager_Articles_Archive extends Troubleshooting_Manager_B
 			<?php
 			$term_data = get_term( $term_id );
 
-			printf( '<h1 class="cs-articles-archive__main-title">%s</h1>', $term_data->name );
+			printf( '<h2 class="cs-articles-archive__main-title">%s</h2>', $term_data->name );
 
 			$this->generate_article_list( $term_id );
 
@@ -164,7 +164,7 @@ class Troubleshooting_Manager_Articles_Archive extends Troubleshooting_Manager_B
 
 						<span class="read-now">
 							<span class="read-now__text">Read now</span>
-							<i class="read-now__icon nc-icon-glyph arrows-1_bold-right"></i>
+							<span class="read-now__icon"></span>
 						</span>
 					</a>
 				</li><?php

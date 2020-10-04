@@ -17,9 +17,9 @@
 
 		.troubleshooting-manager-cats--archive & {
 			margin: 0 0 10px;
-			font-size: 18px;
-			line-height: 27px;
-			font-weight: 500;
+			font-weight: bold;
+			font-size: 20px;
+			line-height: 28px;
 		}
 	}
 
@@ -42,6 +42,7 @@
 			font-size: 16px;
 			line-height: 28px;
 			font-weight: 400;
+			padding-left: 0;
 		}
 	}
 	&__child-item {
@@ -59,15 +60,6 @@
 		position: relative;
 		color: #617BE5;
 
-		&:before {
-			content: '\f054';
-			position: absolute;
-			top: 0;
-			left: 0;
-			font-family: 'FontAwesome';
-			font-size: 8px;
-		}
-
 		.troubleshooting-manager-cats--single & {
 			display: inline-block;
 			padding-left: 15px;
@@ -79,7 +71,7 @@
 
 		.troubleshooting-manager-cats--archive & {
 			display: block;
-			padding-left: 35px;
+			padding-left: 13px;
 			padding-right: 20px;
 
 			&:before {
@@ -89,25 +81,22 @@
 			&:hover,
 			&.current-category {
 				color: #fff;
-				background-color: #617BE5;
+				background-color: #34D7A1 ;
+				&:before {
+					transition: all .25s;
+					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='6' height='8' viewBox='0 0 6 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.726624 7.06L3.77996 4L0.726624 0.94L1.66662 0L5.66662 4L1.66662 8L0.726624 7.06Z' fill='white'/%3E%3C/svg%3E");
+				}
 			}
 		}
-	}
-}
-.custom-background-image-size .elementor-widget-container {
-	@media (max-width: 425px) {
-		background-image: none!important;
-	}
-}
-.custom-width-section .elementor-widget-container {
-	@media (max-width: 425px) {
-		background-image: none!important;
-	}
-	@media (max-width: 1024px) and (min-width: 425px) {
-		background-size: 350px!important;
-	}
-}
-.custom-width-section .troubleshooting-manager-cats {
-	&__child-item {
+
+		&:before {
+			content: '';
+			background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='6' height='8' viewBox='0 0 6 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.726624 7.06L3.77996 4L0.726624 0.94L1.66662 0L5.66662 4L1.66662 8L0.726624 7.06Z' fill='%23617BE5'/%3E%3C/svg%3E");
+			width: 5px;
+			height: 8px;
+			display: inline-block;
+			margin: 0 10px 0 0;
+			transition: all .15s;
+		}
 	}
 }

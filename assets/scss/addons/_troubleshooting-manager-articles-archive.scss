@@ -2,11 +2,12 @@
 	
 	.cs-articles-archive__main-title {
 		margin: 0;
-		font-weight: 900;
-		font-size: 40px;
-		line-height: 47px;
+		font-weight: bold;
+		font-size: 48px;
+		line-height: 56px;
 		letter-spacing: -1px;
 		color: #162B40;
+		margin-bottom: 47px;
 		@media (max-width: 425px) {
 			font-size: 30px;
 			line-height: 40px;
@@ -14,7 +15,8 @@
 	}
 
 	&__list {
-		margin: 42px 0 0;
+		margin: 0;
+		padding: 0;
 		list-style: none;
 
 		counter-reset: list;
@@ -28,7 +30,7 @@
 		position: relative;
 		display: flex;
 		align-items: center;
-		padding: 11px 20px;
+		padding: 11px 16px 11px 20px;
 		font-weight: 500;
 		font-size: 18px;
 		line-height: 27px;
@@ -79,9 +81,18 @@
 
 			&__icon {
 				flex-shrink: 0;
-
 				font-size: 12px;
 				color: #D0D5D9;
+				margin-left: 4px;
+				&:before {
+					content: '';
+					display: inline-block;
+					vertical-align: middle;
+					background-repeat: no-repeat;
+					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg width='8' height='13' viewBox='0 0 8 13' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2.125 12.5273L7.90234 6.75L2.125 0.972656L0.0976562 3L3.84766 6.75L0.0976562 10.5L2.125 12.5273Z' fill='%23D0D5D9'/%3E%3C/svg%3E");
+					width: 12px;
+					height: 16px;
+				}
 			}
 		}
 
