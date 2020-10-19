@@ -34,54 +34,6 @@ class Troubleshooting_Manager_Articles extends Troubleshooting_Manager_Base {
 	protected function _register_controls() {
 
 		$this->start_controls_section(
-			'section_content',
-			array(
-				'label' => esc_html__( 'Content', 'troubleshooting-manager' ),
-			)
-		);
-
-		$this->add_control(
-			'use_back_button',
-			array(
-				'label'        => esc_html__( 'Use Back Button', 'troubleshooting-manager' ),
-				'type'         => Controls_Manager::SWITCHER,
-				'label_on'     => esc_html__( 'Yes', 'troubleshooting-manager' ),
-				'label_off'    => esc_html__( 'No', 'troubleshooting-manager' ),
-				'return_value' => 'yes',
-				'default'      => 'false',
-			)
-		);
-
-		$this->add_control(
-			'back_button_text',
-			array(
-				'label'   => esc_html__( 'Back Button Text', 'troubleshooting-manager' ),
-				'type'    => Controls_Manager::TEXT,
-				'default' => esc_html__( 'Back', 'troubleshooting-manager' ),
-				'condition' => [
-					'use_back_button' => 'yes'
-				],
-			)
-		);
-
-		$this->add_control(
-			'back_button_url',
-			array(
-				'label' => esc_html__( 'Back Button Link', 'troubleshooting-manager' ),
-				'type' => Controls_Manager::URL,
-				'placeholder' => '#',
-				'default' => array(
-					'url' => '#',
-				),
-				'condition' => [
-					'use_back_button' => 'yes'
-				],
-			)
-		);
-
-		$this->end_controls_section();
-
-		$this->start_controls_section(
 			'section_settings',
 			array(
 				'label' => esc_html__( 'Settings', 'troubleshooting-manager' ),
@@ -211,7 +163,6 @@ class Troubleshooting_Manager_Articles extends Troubleshooting_Manager_Base {
 		$is_archive_template = filter_var( $settings['is_archive_template'], FILTER_VALIDATE_BOOLEAN );
 		$show_child_terms = filter_var( $settings['show_child_terms'], FILTER_VALIDATE_BOOLEAN );
 		$show_parent_articles = filter_var( $settings['show_parent_articles'], FILTER_VALIDATE_BOOLEAN );
-		$use_back_button = filter_var( $settings['use_back_button'], FILTER_VALIDATE_BOOLEAN );
 
 		if ( $is_archive_template && isset( get_queried_object()->term_id ) ) {
 			$term_id = get_queried_object()->term_id;
@@ -238,19 +189,7 @@ class Troubleshooting_Manager_Articles extends Troubleshooting_Manager_Base {
 				$term_data = get_term( $term_id );
 
 				if ( 'all' !== $term_id && ! empty( $term_data->name ) && filter_var( $settings['show_title'], FILTER_VALIDATE_BOOLEAN ) ) {
-					$back_button_text = $settings['back_button_text'];
-
-					$back_button_html = '';
-
-					if ( ! empty( $back_button_text ) && $use_back_button ) {
-						$back_button_url = $settings['back_button_url'];
-
-						$back_button_icon = '<i class="nc-icon-glyph arrows-1_tail-left"></i>';
-
-						$back_button_html = sprintf( '<a class="troubleshooting-manager-articles__back" href="%s"><i class="nc-icon-glyph arrows-1_tail-left"></i>%s</a>', $back_button_url['url'], $back_button_text );
-					}
-
-					echo sprintf( '<div class="troubleshooting-manager-articles__name-container">%s<h2 class="troubleshooting-manager-articles__name">%s</h2></div>', $back_button_html, $term_data->name );
+					echo sprintf( '<div class="troubleshooting-manager-articles__name-container"><h2 class="troubleshooting-manager-articles__name">%s</h2></div>', $term_data->name );
 				}
 
 				if ( $show_parent_articles ) {
@@ -330,23 +269,16 @@ class Troubleshooting_Manager_Articles extends Troubleshooting_Manager_Base {
 				while ( $query->have_posts() ) : $query->the_post();
 					$post_id = $query->post->ID;
 
-					$is_course_article = troubleshooting_manager()->progress->is_course_article( $post_id );
-
 					if ( $use_article_limit && $count > $article_list_limit - 1 ) {
 						continue;
 					}?>
 
 					<li id="troubleshooting-manager-article-<?php echo $post_id; ?>"><?php
 						?><a class="troubleshooting-manager-articles__article-link" href="<?php the_permalink(); ?>"><?php
-							the_title();
-
-							if ( $is_course_article ) {
-
-								echo sprintf( '<i class="nc-icon-glyph education_hat" data-tippy="%s" data-tippy-theme="light-border" data-tippy-arrow="true"></i>',
-									esc_html__( 'This article is a lesson from the educational course at CrocoBlock', 'troubleshooting-manager' )
-								);
-							}
-						?></a>
+							the_title(); ?>
+                            <span class="read-now-text">Read now</span>
+                            <span class="read-now-icon"></span>
+                        </a>
 					</li><?php
 
 					$count++;
