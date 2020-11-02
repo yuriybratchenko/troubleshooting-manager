@@ -87,9 +87,8 @@ $accent-color2: #617BE5;
 		list-style-type: none;
 		counter-reset: num;
 
-		li {
-			margin-bottom: 20px;
-		}
+		li { margin-bottom: 20px; }
+		p { margin: 10px 0 20px 60px; }
 
 		.creative-list__title,
 		h2,h3,h4,h5,h6 {
@@ -118,10 +117,6 @@ $accent-color2: #617BE5;
 		&__content,
 		figure, pre  {
 			margin: 10px 0 20px 60px;
-		}
-
-		figure {
-			overflow: hidden;
 		}
 	}
 
@@ -171,6 +166,15 @@ $accent-color2: #617BE5;
 
 	.wp-block-embed iframe {
 		width: 100%;
+	}
+
+	.wp-block-embed-youtube  {
+		margin-bottom: 34px;
+	}
+
+	.wp-block-code,
+	pre {
+		margin-bottom: 30px;
 	}
 
 	.ts-manager-help-box {
@@ -256,12 +260,14 @@ $accent-color2: #617BE5;
 		}
 		&__single-article-sidebar-wrap {
 			width: 100%;
-			padding: 0 26px;
 			margin: 40px 0 0;
 			.ts-manager-sidebar-title {
 				padding-top: 14px;
 				margin-bottom: 10px;
 			}
+		}
+		&__single-article-sidebar {
+			padding: 0 26px;
 		}
 		&__single-article-title {
 			margin-top: 34px;
