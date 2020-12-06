@@ -14,6 +14,12 @@ $accent-color2: #617BE5;
 		margin: 0;
 		padding: 0;
 	}
+	
+	p.offset,
+	figure.offset,
+	pre.offset {
+		margin: 10px 0 20px 60px;
+	}
 
 	&-inner {
 		display: flex;
@@ -208,6 +214,76 @@ $accent-color2: #617BE5;
 			svg {
 				margin-right: 10px;
 			}
+		}
+	}
+	
+	//h3
+	h3 {
+		color: #162B40;
+		font-weight: 400;
+		font-size: 20px;
+		line-height: 28px;
+		
+		&:before {
+			content: "";
+			display: inline-flex;
+			justify-content: center;
+			align-items: center;
+			width: 40px;
+			height: 40px;
+			margin-right: 20px;
+			border-radius: 100%;
+			font-weight: bold;
+			font-size: 20px;
+			line-height: 1;
+			background-color: #34D7A1;
+			color: #fff;
+		}
+		
+		&.item-1:before {
+			content: "1";
+		}
+		&.item-2:before {
+			content: "2";
+		}
+		&.item-3:before {
+			content: "3";
+		}
+		&.item-4:before {
+			content: "4";
+		}
+		&.item-5:before {
+			content: "5";
+		}
+		&.item-6:before {
+			content: "6";
+		}
+		&.item-7:before {
+			content: "7";
+		}
+		&.item-8:before {
+			content: "8";
+		}
+		&.item-9:before {
+			content: "9";
+		}
+		&.item-10:before {
+			content: "10";
+		}
+		&.item-11:before {
+			content: "11";
+		}
+		&.item-12:before {
+			content: "12";
+		}
+		&.item-13:before {
+			content: "13";
+		}
+		&.item-14:before {
+			content: "14";
+		}
+		&.item-15:before {
+			content: "15";
 		}
 	}
 }
